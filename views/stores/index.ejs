@@ -1,0 +1,38 @@
+<% layout('layouts/indexskeleton')%>
+<div id="cluster-map"></div>
+<div class="container">
+    <h1 class="h1" style="color: white;"">All Stores</h1>
+
+    <% for (let store of stores){%>
+    <div class="card mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <%if(store.images.length) {%>
+                <img class="img-fluid" alt="" src="<%=store.images[0].url%>" crossorigin>
+                <% }else {%>
+                <img class="img-fluid" alt=""
+                    src="https://res.cloudinary.com/douqbebwk/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png"
+                    crossorigin>
+                <% } %>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><%= store.title %> </h5>
+
+                    <p class="card-text"><%= store.description %></p>
+                    <p class="card-text">
+                        <small class="text-muted"><%= store.location%></small>
+                    </p>
+                    <a class="btn btn-primary" href="/stores/<%=store._id%>">View <%=store.title%></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }%>
+</div>
+<script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    const stores = { features: <%- JSON.stringify(stores) %>}
+</script>
+
+<script src="/javascripts/clusterMap.js"></script>

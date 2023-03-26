@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate')%>
+    <div class="row">
+        <h1 class="text-center" style="color: azure;">New Store</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/stores" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title" style="color: white;">Name</label>
+                    <input class="form-control" type="text" id="title" name="store[title]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location" style="color: white;">Store Location</label>
+                    <input class="form-control" type="text" id="location" name="store[location]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="email" style="color: white;">Store Email</label>
+                    <input class="form-control" type="text" id="email" name="store[email]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description" style="color: white;">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="store[description]"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-file custom-file">
+                        <input type="file" class="form-file-input" id="image" name="image" multiple>
+                        <label class="form-file-label" for="image">
+                            <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                            <span class="form-file-button">Browse</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add Store</button>
+                </div>
+            </form>
+            <a href="/stores">All Stores</a>
+        </div>
+    </div>
