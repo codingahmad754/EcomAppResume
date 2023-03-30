@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-const { validateProduct, isLoggedIn, isProductAuthor } = require('../middleware');
+const { validateProduct, isLoggedIn, isProductAuthor, isReviewAuthor } = require('../middleware');
 // const Store = require('../models/store');
 // const Product = require('../models/product');
 const product = require('../controllers/products');
@@ -15,7 +15,7 @@ const catchAsync = require('../utils/catchAsync');
 
 router.post('/', isLoggedIn, upload.array('image'), validateProduct, catchAsync(product.createProduct))
 
-router.get('/:productId/show', isLoggedIn, catchAsync(product.renderProductsShow))
+router.get('/:productId/show', catchAsync(product.renderProductsShow))
 
 router.post('/:productId/show', isLoggedIn, catchAsync(product.createReview))
 

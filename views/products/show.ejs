@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate')%>
 
     <link rel="stylesheet" href="/stylesheets/stars.css">
-    <div class="card">
+    <div class="card mb-4">
         <h1 class="center">
             <%= product.name.charAt(0).toUpperCase() + product.name.slice(1) %>
         </h1>
@@ -46,6 +46,8 @@
         </div>
 
     </div>
+    <h2 class="center mb-3" style="color: white;">Reviews</h2>
+
     <% if(currentUser){ %>
         <h2 class="center" style="color: azure;">Leave a Review</h2>
         <form action="/stores/<%=store._id%>/products/<%=product._id%>/show" method="POST" class="mb-3 validated-form"

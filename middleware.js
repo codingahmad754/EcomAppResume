@@ -2,6 +2,7 @@ const { storeSchema, productSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Store = require('./models/store');
 const Product = require('./models/product');
+const Review = require('./models/review.js');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -39,6 +40,15 @@ module.exports.isProductAuthor = async (req, res, next) => {
     if (!product.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
         return res.redirect(`/stores/${id}`);
+    }
+    next();
+}
+module.exports.isReviewAuthor = async (req, res, next) => {
+    const { id, productId } = req.params;
+    const review = await Review.findById(req.user._id);
+    if (!review.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/stores/${id}/products/${productId}`);
     }
     next();
 }

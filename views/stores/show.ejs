@@ -133,7 +133,7 @@
                                     </p>
                                     <a class="btn btn-primary mb-1"
                                         href="/stores/<%=store._id%>/products/<%= product._id %>/show">View
-                                        <%=product.body%>
+                                        <%=product.name%>
                                     </a>
                                     <% if( currentUser && product.author.equals(currentUser._id)) {%>
                                         <form action="/stores/<%=store._id%>/products/<%=product._id%>?_method=DELETE"
@@ -150,7 +150,7 @@
 
             <script>
                 const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-                const store = <%- JSON.stringify(store) %>
+                const store = <% - JSON.stringify(store) %>
             </script>
 
             <script src="/javascripts/showPageMap.js"></script>
